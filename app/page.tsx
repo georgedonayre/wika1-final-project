@@ -2,6 +2,7 @@
 
 import { useGameState } from "@/hooks/useGameState";
 import Header from "@/components/header";
+import LivesDisplay from "@/components/live-display";
 
 export default function Home() {
   const {
@@ -33,7 +34,10 @@ export default function Home() {
   return (
     <div className="font-pixel flex-col min-h-screen">
       <Header />
-
+      {/* main board game */}
+      <main className="flex-1 max-w-xl w-full mx-auto px-4 py-8">
+        <LivesDisplay remaining={gameState.remainingAttempts} />
+      </main>
       <footer className="border-t border-[var(--border-default)] p-4 text-center text-xs text-[var(--text-muted)]">
         Wika-Konek © {new Date().getFullYear()} — tagline here
       </footer>
