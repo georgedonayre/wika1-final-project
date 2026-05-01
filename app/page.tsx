@@ -3,6 +3,8 @@
 import { useGameState } from "@/hooks/useGameState";
 import Header from "@/components/header";
 import LivesDisplay from "@/components/live-display";
+import GameBoard from "@/components/game-board";
+import SubmitButton from "@/components/submit-button";
 
 export default function Home() {
   const {
@@ -37,6 +39,17 @@ export default function Home() {
       {/* main board game */}
       <main className="flex-1 max-w-xl w-full mx-auto px-4 py-8">
         <LivesDisplay remaining={gameState.remainingAttempts} />
+        <GameBoard
+          gameState={gameState}
+          puzzle={puzzle}
+          onSelectWord={handleSelectWord}
+        />
+        <SubmitButton
+          selectedCount={gameState.selectedWords.length}
+          onSubmit={handleSubmit}
+          onShuffle={handleShuffle}
+          disabled={gameState.status !== "playing"}
+        />
       </main>
       <footer className="border-t border-[var(--border-default)] p-4 text-center text-xs text-[var(--text-muted)]">
         Wika-Konek © {new Date().getFullYear()} — tagline here
