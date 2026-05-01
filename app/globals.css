@@ -50,10 +50,30 @@
 }
 
 @theme inline {
+  /* base */
   --color-background: var(--bg-primary);
   --color-foreground: var(--text-primary);
+
+  /* text */
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  /* borders */
+  --color-border: var(--border-default);
+  --color-border-subtle: var(--border-subtle);
+
+  /* accents */
+  --color-primary: var(--green-primary);
+  --color-primary-dim: var(--green-dim);
+
+  /* surfaces */
+  --color-surface: var(--bg-secondary);
+  --color-surface-elevated: var(--bg-tertiary);
+
+  /* fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pixel: var(--font-pixel);
 }
 
 /* base / reset styles */
