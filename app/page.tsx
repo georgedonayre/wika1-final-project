@@ -5,6 +5,9 @@ import Header from "@/components/header";
 import LivesDisplay from "@/components/live-display";
 import GameBoard from "@/components/game-board";
 import SubmitButton from "@/components/submit-button";
+import WinModal from "@/components/win-modal";
+import LoseModal from "@/components/lose-modal";
+import { GAME_NAME } from "@/lib/constants";
 
 export default function Home() {
   const {
@@ -52,8 +55,15 @@ export default function Home() {
         />
       </main>
       <footer className="border-t border-[var(--border-default)] p-4 text-center text-xs text-[var(--text-muted)]">
-        Wika-Konek © {new Date().getFullYear()} — tagline here
+        {GAME_NAME} © {new Date().getFullYear()} — tagline here
       </footer>
+
+      {/* ── modals ── */}
+      {showWinModal && (
+        <WinModal onShare={handleShare} onDismiss={dismissWinModal} />
+      )}
+
+      {showLoseModal && <LoseModal onDismiss={dismissLoseModal} />}
     </div>
   );
 }
