@@ -4,7 +4,7 @@
 
 import { Puzzle } from "@/types/game";
 
-export const morePuzzles: Puzzle[] = [
+export const puzzles: Puzzle[] = [
   {
     id: "puzzle-demo-3",
     date: "2026-05-03",
