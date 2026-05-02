@@ -149,7 +149,7 @@ export const puzzles: Puzzle[] = [
         color: "purple",
         connection: "Mga pandiwang may 'mag-'",
         words: [
-          { id: "w13", text: "maglakad", language: "tagalog" },
+          { id: "w13", text: "maglakadddddddd", language: "tagalog" },
           { id: "w14", text: "magluto", language: "tagalog" },
           { id: "w15", text: "magbasa", language: "tagalog" },
           { id: "w16", text: "magtulog", language: "tagalog" },
