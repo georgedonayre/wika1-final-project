@@ -1,5 +1,8 @@
 "use client";
 
+import { FaTrophy } from "react-icons/fa";
+import { MdContentCopy, MdClose } from "react-icons/md";
+
 interface WinModalProps {
   onShare: () => void;
   onDismiss: () => void;
@@ -29,7 +32,7 @@ export default function WinModal({ onShare, onDismiss }: WinModalProps) {
           background: "var(--bg-secondary)",
           border: "1px solid var(--green-primary)",
           borderRadius: "var(--radius-xl)",
-          padding: "40px 32px",
+          padding: "clamp(24px, 5vw, 40px) clamp(20px, 4vw, 32px)",
           maxWidth: "420px",
           width: "100%",
           textAlign: "center",
@@ -37,11 +40,19 @@ export default function WinModal({ onShare, onDismiss }: WinModalProps) {
         }}
       >
         {/* Trophy icon */}
-        <div style={{ fontSize: "3rem", marginBottom: "12px" }}>🎉</div>
+        <div
+          style={{
+            fontSize: "clamp(2rem, 6vw, 3rem)",
+            marginBottom: "12px",
+            color: "var(--green-primary)",
+          }}
+        >
+          <FaTrophy style={{ display: "inline-block" }} />
+        </div>
 
         <h2
           style={{
-            fontSize: "1.75rem",
+            fontSize: "clamp(1.25rem, 5vw, 1.75rem)",
             fontWeight: 800,
             color: "var(--green-primary)",
             marginBottom: "12px",
@@ -53,13 +64,14 @@ export default function WinModal({ onShare, onDismiss }: WinModalProps) {
         <p
           style={{
             color: "var(--text-secondary)",
+            fontSize: "clamp(0.85rem, 3vw, 1rem)",
             marginBottom: "28px",
             lineHeight: 1.6,
           }}
         >
           Mahusay! Nahanap mo ang lahat ng mga grupo.
           <br />
-          Bumalik bukas para sa bagong hamon!
+          Edi ikaw na!
         </p>
 
         {/* Share button */}
@@ -68,16 +80,20 @@ export default function WinModal({ onShare, onDismiss }: WinModalProps) {
           onClick={onShare}
           style={{
             width: "100%",
-            padding: "14px",
+            padding: "clamp(10px, 3vw, 14px)",
             borderRadius: "var(--radius-md)",
             border: "none",
             background: "var(--green-primary)",
             color: "var(--text-inverse)",
-            fontSize: "1rem",
+            fontSize: "clamp(0.85rem, 3vw, 1rem)",
             fontWeight: 700,
             cursor: "pointer",
             marginBottom: "12px",
             transition: "background var(--transition-fast)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.background = "var(--green-secondary)";
@@ -86,22 +102,27 @@ export default function WinModal({ onShare, onDismiss }: WinModalProps) {
             e.currentTarget.style.background = "var(--green-primary)";
           }}
         >
-          📋 I-share ang Resulta
+          <MdContentCopy size="1.1em" />
+          I-share ang Resulta
         </button>
 
         <button
           onClick={onDismiss}
           style={{
             width: "100%",
-            padding: "14px",
+            padding: "clamp(10px, 3vw, 14px)",
             borderRadius: "var(--radius-md)",
             border: "1px solid var(--border-default)",
             background: "var(--bg-tertiary)",
             color: "var(--text-secondary)",
-            fontSize: "1rem",
+            fontSize: "clamp(0.85rem, 3vw, 1rem)",
             fontWeight: 600,
             cursor: "pointer",
             transition: "all var(--transition-fast)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.background = "var(--bg-hover)";
@@ -110,6 +131,7 @@ export default function WinModal({ onShare, onDismiss }: WinModalProps) {
             e.currentTarget.style.background = "var(--bg-tertiary)";
           }}
         >
+          <MdClose size="1.1em" />
           Isara
         </button>
       </div>

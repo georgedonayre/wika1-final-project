@@ -1,12 +1,6 @@
-/**
- * components/LoseModal.tsx
- *
- * Game-over modal shown when the player runs out of attempts.
- * Does NOT reveal answers — encourages the player to return tomorrow.
- * Dismissable, but the game board remains frozen until lives reset.
- */
-
 "use client";
+
+import { MdHeartBroken, MdClose } from "react-icons/md";
 
 interface LoseModalProps {
   onDismiss: () => void;
@@ -36,18 +30,26 @@ export default function LoseModal({ onDismiss }: LoseModalProps) {
           background: "var(--bg-secondary)",
           border: "1px solid var(--error)",
           borderRadius: "var(--radius-xl)",
-          padding: "40px 32px",
+          padding: "clamp(24px, 5vw, 40px) clamp(20px, 4vw, 32px)",
           maxWidth: "420px",
           width: "100%",
           textAlign: "center",
           boxShadow: "0 0 40px rgba(248, 113, 113, 0.1)",
         }}
       >
-        <div style={{ fontSize: "3rem", marginBottom: "12px" }}>💔</div>
+        <div
+          style={{
+            fontSize: "clamp(2rem, 6vw, 3rem)",
+            marginBottom: "12px",
+            color: "var(--error)",
+          }}
+        >
+          <MdHeartBroken style={{ display: "inline-block" }} />
+        </div>
 
         <h2
           style={{
-            fontSize: "1.75rem",
+            fontSize: "clamp(1.25rem, 5vw, 1.75rem)",
             fontWeight: 800,
             color: "var(--error)",
             marginBottom: "12px",
@@ -59,6 +61,7 @@ export default function LoseModal({ onDismiss }: LoseModalProps) {
         <p
           style={{
             color: "var(--text-secondary)",
+            fontSize: "clamp(0.85rem, 3vw, 1rem)",
             marginBottom: "32px",
             lineHeight: 1.6,
           }}
@@ -71,16 +74,20 @@ export default function LoseModal({ onDismiss }: LoseModalProps) {
           onClick={onDismiss}
           style={{
             width: "100%",
-            padding: "14px",
+            padding: "clamp(10px, 3vw, 14px)",
             borderRadius: "var(--radius-md)",
             border: "1px solid var(--error)",
             background: "transparent",
             color: "var(--error)",
-            fontSize: "1rem",
+            fontSize: "clamp(0.85rem, 3vw, 1rem)",
             fontWeight: 700,
             cursor: "pointer",
             transition:
               "background var(--transition-fast), color var(--transition-fast)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.background = "var(--error)";
