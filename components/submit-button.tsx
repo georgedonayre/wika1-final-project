@@ -18,23 +18,24 @@ export default function SubmitButton({
   const canSubmit = selectedCount === WORDS_PER_GROUP && !disabled;
 
   return (
-    <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
+    <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
       <button
         id="btn-submit"
         onClick={onSubmit}
         disabled={!canSubmit}
         style={{
           flex: 1,
-          padding: "14px 16px",
+          padding: "clamp(10px, 2.5vw, 14px) clamp(8px, 2vw, 16px)",
           borderRadius: "var(--radius-md)",
           border: "none",
           background: canSubmit ? "var(--green-primary)" : "var(--bg-hover)",
           color: canSubmit ? "var(--text-inverse)" : "var(--text-muted)",
-          fontSize: "0.95rem",
+          fontSize: "clamp(0.55rem, 2.2vw, 0.95rem)",
           fontWeight: 700,
           cursor: canSubmit ? "pointer" : "not-allowed",
           transition: "all var(--transition-fast)",
           opacity: canSubmit ? 1 : 0.5,
+          whiteSpace: "nowrap",
         }}
         onMouseEnter={(e) => {
           if (canSubmit) {
@@ -57,16 +58,17 @@ export default function SubmitButton({
         onClick={onShuffle}
         disabled={disabled}
         style={{
-          padding: "14px 20px",
+          padding: "clamp(10px, 2.5vw, 14px) clamp(12px, 3vw, 20px)",
           borderRadius: "var(--radius-md)",
           border: "1px solid var(--border-default)",
           background: "var(--bg-tertiary)",
           color: disabled ? "var(--text-muted)" : "var(--text-secondary)",
-          fontSize: "0.95rem",
+          fontSize: "clamp(0.55rem, 2.2vw, 0.95rem)",
           fontWeight: 600,
           cursor: disabled ? "not-allowed" : "pointer",
           opacity: disabled ? 0.4 : 1,
           transition: "all var(--transition-fast)",
+          whiteSpace: "nowrap",
         }}
         onMouseEnter={(e) => {
           if (!disabled) {

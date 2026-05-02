@@ -34,14 +34,14 @@ export default function WordTile({
       className={isSelected ? "animate-selected-pulse" : ""}
       style={{
         width: "100%",
-        height: "72px",
+        height: "clamp(52px, 14vw, 72px)",
         borderRadius: "var(--radius-md)",
         border: isSelected
           ? "2px solid var(--green-primary)"
           : "1px solid var(--border-default)",
         background: isSelected ? "var(--green-glow)" : "var(--bg-tertiary)",
         color: isSelected ? "var(--green-primary)" : "var(--text-primary)",
-        fontSize: "0.95rem",
+        fontSize: "clamp(0.5rem, 2.2vw, 0.95rem)",
         fontWeight: 700,
         cursor: isDisabled ? "not-allowed" : "pointer",
         opacity: isDisabled ? 0.4 : 1,
@@ -49,6 +49,13 @@ export default function WordTile({
         textTransform: "capitalize",
         letterSpacing: "0.2px",
         boxShadow: isSelected ? "var(--shadow-glow)" : "none",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+        padding: "0 4px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
       onMouseEnter={(e) => {
         if (!isDisabled && !isSelected) {
@@ -63,7 +70,15 @@ export default function WordTile({
         }
       }}
     >
-      {word.text}
+      <span
+        style={{
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {word.text}
+      </span>
     </button>
   );
 }

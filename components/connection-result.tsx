@@ -25,7 +25,7 @@ export default function ConnectionResult({
     <div
       className="animate-pop-in"
       style={{
-        padding: "16px",
+        padding: "clamp(10px, 3vw, 16px)",
         borderRadius: "var(--radius-md)",
         border: `1px solid ${theme.accent}`,
         background: theme.bg,
@@ -35,10 +35,10 @@ export default function ConnectionResult({
       {/* label */}
       <div
         style={{
-          fontSize: "0.8rem",
+          fontSize: "clamp(0.5rem, 2vw, 0.8rem)",
           fontWeight: 700,
           color: theme.accent,
-          marginBottom: "8px",
+          marginBottom: "6px",
           textTransform: "uppercase",
           letterSpacing: "0.5px",
         }}
@@ -47,16 +47,16 @@ export default function ConnectionResult({
       </div>
 
       {/* words inside the group */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
         {group.words.map((word) => (
           <span
             key={word.id}
             style={{
-              padding: "4px 12px",
+              padding: "3px clamp(6px, 1.5vw, 12px)",
               borderRadius: "var(--radius-sm)",
               background: "var(--bg-tertiary)",
               color: "var(--text-primary)",
-              fontSize: "0.85rem",
+              fontSize: "clamp(0.45rem, 1.8vw, 0.85rem)",
               fontWeight: 500,
             }}
           >

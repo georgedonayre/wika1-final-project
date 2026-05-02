@@ -37,10 +37,10 @@ export default function Home() {
     );
   }
   return (
-    <div className="font-pixel flex-col min-h-screen">
+    <div className="font-pixel flex flex-col min-h-screen">
       <Header />
       {/* main board game */}
-      <main className="flex-1 max-w-xl w-full mx-auto px-4 py-8">
+      <main className="flex-1 flex flex-col justify-center max-w-xl w-full mx-auto px-3 sm:px-4 py-5 sm:py-8">
         <LivesDisplay remaining={gameState.remainingAttempts} />
         <GameBoard
           gameState={gameState}
@@ -54,7 +54,7 @@ export default function Home() {
           disabled={gameState.status !== "playing"}
         />
       </main>
-      <footer className="border-t border-[var(--border-default)] p-4 text-center text-xs text-[var(--text-muted)]">
+      <footer className="border-t border-[var(--border-default)] p-3 sm:p-4 text-center text-[0.45rem] sm:text-xs text-[var(--text-muted)]">
         {GAME_NAME} © {new Date().getFullYear()} — tagline here
       </footer>
 

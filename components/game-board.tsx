@@ -43,7 +43,7 @@ export default function GameBoard({
       </div>
 
       {/* remaining word tiles */}
-      <div className="grid grid-cols-4 gap-2 mb-4">
+      <div className="grid grid-cols-4 gap-1.5 sm:gap-2 mb-4">
         {gameState.words.map((word) => (
           <WordTile
             key={word.id}
