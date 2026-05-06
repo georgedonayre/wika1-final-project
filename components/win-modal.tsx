@@ -4,11 +4,10 @@ import { FaTrophy } from "react-icons/fa";
 import { MdContentCopy, MdClose } from "react-icons/md";
 
 interface WinModalProps {
-  onShare: () => void;
   onDismiss: () => void;
 }
 
-export default function WinModal({ onShare, onDismiss }: WinModalProps) {
+export default function WinModal({ onDismiss }: WinModalProps) {
   return (
     <div
       className="animate-overlay"
@@ -73,38 +72,6 @@ export default function WinModal({ onShare, onDismiss }: WinModalProps) {
           <br />
           Edi ikaw na!
         </p>
-
-        {/* Share button */}
-        <button
-          id="btn-share"
-          onClick={onShare}
-          style={{
-            width: "100%",
-            padding: "clamp(10px, 3vw, 14px)",
-            borderRadius: "var(--radius-md)",
-            border: "none",
-            background: "var(--green-primary)",
-            color: "var(--text-inverse)",
-            fontSize: "clamp(0.85rem, 3vw, 1rem)",
-            fontWeight: 700,
-            cursor: "pointer",
-            marginBottom: "12px",
-            transition: "background var(--transition-fast)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "var(--green-secondary)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "var(--green-primary)";
-          }}
-        >
-          <MdContentCopy size="1.1em" />
-          I-share ang Resulta
-        </button>
 
         <button
           onClick={onDismiss}

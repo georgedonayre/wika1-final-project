@@ -4,7 +4,6 @@
  *   - selecting and deselecting words.
  *   - submitting a guess (correct -> solve group, wrong -> lose a life).
  *   - shuffling remaining words.
- *   - generating shareable result text.
  */
 
 "use client";
@@ -36,7 +35,6 @@ export interface UseGameStateReturn {
   handleSelectWord: (word: Word) => void;
   handleSubmit: () => void;
   handleShuffle: () => void;
-  handleShare: () => void;
   dismissWinModal: () => void;
   dismissLoseModal: () => void;
   resetGame: () => void;
@@ -168,11 +166,6 @@ export function useGameState(): UseGameStateReturn {
     persistState({ ...gameState, words: shuffled, selectedWords: [] });
   }, [gameState, persistState]);
 
-  // do this later
-  const handleShare = useCallback(() => {
-    return;
-  }, []);
-
   //modal dismiss handlers
   const dismissWinModal = useCallback(() => setShowWinModal(false), []);
   const dismissLoseModal = useCallback(() => setShowLoseModal(false), []);
@@ -193,7 +186,6 @@ export function useGameState(): UseGameStateReturn {
     handleSelectWord,
     handleSubmit,
     handleShuffle,
-    handleShare,
     dismissWinModal,
     dismissLoseModal,
     resetGame,

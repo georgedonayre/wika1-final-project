@@ -5,6 +5,7 @@ export type Word = {
   id: string;
   text: string;
   language: Language;
+  translation?: string; // for non-tagalog words only.
 };
 
 /** color coding for diffuculty*/
