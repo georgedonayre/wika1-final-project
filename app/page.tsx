@@ -19,7 +19,6 @@ export default function Home() {
     handleSelectWord,
     handleSubmit,
     handleShuffle,
-    handleShare,
     dismissWinModal,
     dismissLoseModal,
     resetGame,
@@ -59,9 +58,7 @@ export default function Home() {
       </footer>
 
       {/* ── modals ── */}
-      {showWinModal && (
-        <WinModal onShare={handleShare} onDismiss={dismissWinModal} />
-      )}
+      {showWinModal && <WinModal onDismiss={dismissWinModal} />}
 
       {showLoseModal && <LoseModal onDismiss={dismissLoseModal} />}
     </div>
