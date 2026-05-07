@@ -18,7 +18,7 @@ export default function Header() {
         </Link>
 
         {/* nav */}
-        <nav className="flex items-center flex-shrink-0">
+        <nav className="flex items-center flex-shrink-0 gap-2">
           <Link
             href="/paano-maglaro"
             className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md border border-[var(--border-default)] bg-[var(--bg-tertiary)] text-[var(--text-secondary)] text-xs sm:text-sm font-semibold no-underline transition-colors duration-150 hover:border-[var(--green-primary)] hover:text-[var(--green-primary)]"
@@ -41,6 +41,28 @@ export default function Header() {
             </svg>
             {/* hide label on very small screens, show icon only */}
             <span className="hidden sm:inline">Paano Maglaro</span>
+          </Link>
+
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md border border-[var(--border-default)] bg-[var(--bg-tertiary)] text-[var(--text-secondary)] text-xs sm:text-sm font-semibold no-underline transition-colors duration-150 hover:border-[var(--green-primary)] hover:text-[var(--green-primary)]"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="flex-shrink-0"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <circle cx="12" cy="8" r="1" />
+            </svg>
+            <span className="hidden sm:inline">About Me</span>
           </Link>
         </nav>
       </div>

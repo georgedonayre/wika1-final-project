@@ -8,6 +8,7 @@
  */
 "use client";
 
+import { useState } from "react";
 import { Word } from "@/types/game";
 
 interface WordTileProps {
@@ -23,6 +24,11 @@ export default function WordTile({
   isDisabled,
   onClick,
 }: WordTileProps) {
+  const [showHint, setShowHint] = useState(false);
+  const hasHint =
+    word.language === "kapampangan" || word.language === "pangasinense";
+  const hintText = word.translation ? word.translation : "Hint available";
+
   return (
     <button
       id={`tile-${word.id}`}
@@ -32,6 +38,7 @@ export default function WordTile({
       aria-label={`Salita: ${word.text}`}
       className={isSelected ? "animate-selected-pulse" : ""}
       style={{
+        position: "relative",
         width: "100%",
         minHeight: "clamp(52px, 14vw, 72px)",
         borderRadius: "var(--radius-md)",
@@ -66,16 +73,87 @@ export default function WordTile({
         }
       }}
     >
-      <span
+      <div
         style={{
-          whiteSpace: "normal",
-          wordBreak: "break-word",
-          lineHeight: 1.2,
-          textAlign: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "0.4rem",
+          flexWrap: "wrap",
         }}
       >
-        {word.text}
-      </span>
+        <span
+          style={{
+            whiteSpace: "normal",
+            wordBreak: "break-word",
+            lineHeight: 1.2,
+            textAlign: "center",
+          }}
+        >
+          {word.text}
+        </span>
+        {hasHint && (
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowHint((current) => !current);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                e.stopPropagation();
+                setShowHint((current) => !current);
+              }
+            }}
+            aria-label={`Translation: ${hintText}`}
+            title={hintText}
+            style={{
+              position: "absolute",
+              top: "6px",
+              right: "6px",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "0.85rem",
+              height: "0.85rem",
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.16)",
+              color: "var(--text-primary)",
+              fontSize: "0.65rem",
+              fontWeight: 800,
+              lineHeight: 1,
+              border: "1px solid transparent",
+              padding: 0,
+              cursor: "pointer",
+            }}
+          >
+            ?
+          </span>
+        )}
+        {hasHint && showHint && (
+          <span
+            style={{
+              position: "absolute",
+              bottom: "6px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              background: "rgba(0, 0, 0, 0.85)",
+              color: "white",
+              padding: "0.3rem 0.5rem",
+              borderRadius: "0.35rem",
+              fontSize: "0.65rem",
+              maxWidth: "90%",
+              textAlign: "center",
+              zIndex: 1,
+              pointerEvents: "none",
+            }}
+          >
+            {hintText}
+          </span>
+        )}
+      </div>
     </button>
   );
 }
