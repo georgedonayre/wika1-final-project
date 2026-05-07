@@ -40,7 +40,7 @@ export default function Header() {
               <line x1="12" y1="17" x2="12.01" y2="17" />
             </svg>
             {/* hide label on very small screens, show icon only */}
-            <span className="hidden sm:inline">Paano Maglaro</span>
+            <span className="hidden sm:inline">Mekaniks</span>
           </Link>
 
           <Link
@@ -62,7 +62,7 @@ export default function Header() {
               <line x1="12" y1="16" x2="12" y2="12" />
               <circle cx="12" cy="8" r="1" />
             </svg>
-            <span className="hidden sm:inline">About Me</span>
+            <span className="hidden sm:inline">About</span>
           </Link>
         </nav>
       </div>

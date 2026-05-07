@@ -62,7 +62,7 @@ export default function PaanoMaglaroPage() {
           </Link>
 
           <h1 className="text-xl font-bold text-[var(--green-primary)] m-0">
-            Paano Maglaro?
+            Mekaniks
           </h1>
         </div>
       </header>
