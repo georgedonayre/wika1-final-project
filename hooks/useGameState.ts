@@ -24,6 +24,13 @@ import {
   STORAGE_KEY,
 } from "@/lib/constants";
 import { checkGuess } from "@/lib/gameLogic";
+import { ToastType } from "@/components/toast";
+
+// payload shows after the guess
+export interface ToastState {
+  type: ToastType;
+  message: string;
+}
 
 /** return type for the useGameState hook */
 export interface UseGameStateReturn {
@@ -32,6 +39,8 @@ export interface UseGameStateReturn {
   isLoading: boolean;
   showWinModal: boolean;
   showLoseModal: boolean;
+  toast: ToastState | null;
+  clearToast: () => void;
   handleSelectWord: (word: Word) => void;
   handleSubmit: () => void;
   handleShuffle: () => void;
@@ -46,6 +55,7 @@ export function useGameState(): UseGameStateReturn {
   const [isLoading, setIsLoading] = useState(true);
   const [showWinModal, setShowWinModal] = useState(false);
   const [showLoseModal, setShowLoseModal] = useState(false);
+  const [toast, setToast] = useState<ToastState | null>(null);
 
   // initialise game on first render
   useEffect(() => {
@@ -140,6 +150,7 @@ export function useGameState(): UseGameStateReturn {
       };
 
       persistState(newState);
+      setToast({ type: "correct", message: "Tama!" });
       if (isWon) setShowWinModal(true);
     } else {
       //wrong guess -> deduct an attempt
@@ -154,6 +165,7 @@ export function useGameState(): UseGameStateReturn {
       };
 
       persistState(newState);
+      setToast({ type: "wrong", message: "Mali, subukan muli!" });
       if (isLost) setShowLoseModal(true);
     }
   }, [gameState, puzzle, persistState]);
@@ -165,6 +177,8 @@ export function useGameState(): UseGameStateReturn {
     const shuffled = shuffleWords(gameState.words);
     persistState({ ...gameState, words: shuffled, selectedWords: [] });
   }, [gameState, persistState]);
+
+  const clearToast = useCallback(() => setToast(null), []);
 
   //modal dismiss handlers
   const dismissWinModal = useCallback(() => setShowWinModal(false), []);
@@ -183,6 +197,8 @@ export function useGameState(): UseGameStateReturn {
     isLoading,
     showWinModal,
     showLoseModal,
+    toast,
+    clearToast,
     handleSelectWord,
     handleSubmit,
     handleShuffle,
