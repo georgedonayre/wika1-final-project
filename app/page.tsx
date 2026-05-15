@@ -7,6 +7,7 @@ import GameBoard from "@/components/game-board";
 import SubmitButton from "@/components/submit-button";
 import WinModal from "@/components/win-modal";
 import LoseModal from "@/components/lose-modal";
+import Toast from "@/components/toast";
 import { GAME_NAME } from "@/lib/constants";
 
 export default function Home() {
@@ -22,6 +23,8 @@ export default function Home() {
     dismissWinModal,
     dismissLoseModal,
     resetGame,
+    toast,
+    clearToast,
   } = useGameState();
 
   if (isLoading || !gameState || !puzzle) {
@@ -37,6 +40,11 @@ export default function Home() {
   }
   return (
     <div className="font-pixel flex flex-col min-h-screen">
+      {/* toast for guess feedback */}
+      {toast && (
+        <Toast type={toast.type} message={toast.message} onDone={clearToast} />
+      )}
+
       <Header />
       {/* main board game */}
       <main className="flex-1 flex flex-col justify-center max-w-xl w-full mx-auto px-3 sm:px-4 py-5 sm:py-8">
