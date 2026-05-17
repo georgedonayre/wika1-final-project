@@ -23,25 +23,26 @@ const STEPS = [
   {
     number: 1,
     title: "Suriin ang mga salita",
-    description: `Makikita mo ang ${WORDS_PER_GROUP * TOTAL_GROUPS} na salita na naka-shuffle sa game board. Ang mga salitang ito ay nagmula sa iba't ibang katutubong wika ng miyembro ng aming grupo.`,
+    description: `Makikita mo ang ${WORDS_PER_GROUP * TOTAL_GROUPS} na salita na naka-shuffle sa game board. Ang mga salitang ito ay nagmula sa tatlong katutubong wika ng aming grupo.`,
     icon: HiEye,
   },
   {
     number: 2,
     title: "Pumili ng 4 na salita",
-    description: `I-tap o i-click ang ${WORDS_PER_GROUP} na salita na sa tingin mo ay konektado.`,
+    description: `Mag-tap o mag-click ng apat na salita na sa tingin mo ay konektado.`,
     icon: HiCursorClick,
   },
   {
     number: 3,
     title: "Isumite ang sagot",
-    description: `Kapag sure ka na sa napili mong ${WORDS_PER_GROUP} na sa salita. Isipin uli kung tama ba talaga ang pinili mo. At kung sure ka na talaga, pindutin ang "Isumite" button.`,
+    description: `Kapag sure ka na sa napili mong apat na salita, isipin muli kung tama ba talaga ang pinili mo. At kung sure ka na talaga, pindutin ang "Isumite" button.`,
     icon: HiCheckCircle,
   },
   {
     number: 4,
-    title: "Ulitin ang Hakbang 1-3",
-    description: `Hanggang mahanap mo lahat ng ${TOTAL_GROUPS} na grupo ay ulitin lamang ang mga hakbang sa itaas. Ayun lang, good luck po!`,
+    title: "Hanapin ang lahat ng grupo",
+
+    description: `Kapag nahanap mo na ang isang grupo, ulitin mo lamang ang hakbang 1-3. Gawin ito hanggang mahanap mo ang lahat ng apat na grupo. Good luck po!`,
     icon: HiTrophy,
   },
 ];
@@ -75,13 +76,13 @@ export default function PaanoMaglaroPage() {
 
           <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
             Ang {GAME_NAME} ay isang daily word connections game na naglalayong
-            ipagdiwang ang ating mga wikang Filipino. Hanapin ang mga grupo ng
-            salita na may koneksyon! Sa kasalukuyan mayroon 3 suportadong wika:
-            Tagalog, Kapampangan, at Pangasinense.
+            ipagdiwang ang ating mga katutubong wika ng Pilipinas. Hanapin ang
+            mga grupo ng salita na may koneksyon! Sa kasalukuyan, mayroon itong
+            tatlong suportadong katutubong wika: Tagalog, Kapampangan, at
+            Pangasinan.
           </p>
         </section>
 
-        {/* ── step cards ── */}
         <section className="mb-10">
           <h3 className="text-lg font-bold text-[var(--text-primary)] mb-5">
             Mga Hakbang
@@ -125,7 +126,59 @@ export default function PaanoMaglaroPage() {
           </div>
         </section>
 
-        {/* ── legend ── */}
+        <section className="mb-10">
+          <h3 className="text-lg font-bold text-[var(--text-primary)] mb-4">
+            Uri ng Koneksyon
+          </h3>
+
+          <p className="text-sm text-[var(--text-secondary)] mb-4 leading-relaxed">
+            Ang bawat grupo ng apat na salita ay nagtataglay ng iisang
+            koneksyon. Narito ang mga uri ng koneksyon na maaaring makita sa
+            laro:
+          </p>
+
+          <div className="flex flex-col gap-3">
+            {[
+              {
+                label: "Parehong Kategorya",
+                desc: "Apat na salita na kabilang sa iisang kategorya.",
+                example: "hal. mga hayop, pagkain, kulay, atbp.",
+              },
+              {
+                label: "Parehong Kahulugan sa Iba't Ibang Wika",
+                desc: "Apat na salita na magkakaparehong kahulugan ngunit mula sa iba't ibang katutubong wika.",
+                example: "hal. synonyms sa Tagalog, Kapampangan, at Pangasinan",
+              },
+              {
+                label: "Ayon sa Konteksto o Sitwasyon",
+                desc: "Apat na salita na kalimitang ginagamit sa iisang konteksto o sitwasyon.",
+                example: "hal. mga salitang ginagamit sa UP",
+              },
+              {
+                label: "Gramatika at Istruktura",
+                desc: "Apat na salita na nagtataglay ng iisang katangiang panggramatika o istruktura.",
+                example:
+                  "hal. nagsisimula ang bawat salita sa parehong letra, lahat ay salitang kilos",
+              },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="p-4 rounded-[var(--radius-md)] border border-[var(--border-default)] bg-[var(--bg-secondary)]"
+              >
+                <p className="text-sm font-bold text-[var(--text-primary)] mb-1">
+                  {item.label}
+                </p>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-1">
+                  {item.desc}
+                </p>
+                <p className="text-xs text-[var(--text-muted)] italic">
+                  {item.example}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="mb-10">
           <h3 className="text-lg font-bold text-[var(--text-primary)] mb-4">
             Antas ng Kahirapan
@@ -180,7 +233,7 @@ export default function PaanoMaglaroPage() {
           <div className="p-5 rounded-[var(--radius-lg)] border border-[var(--border-default)] bg-[var(--bg-secondary)]">
             <ul className="list-disc pl-5 text-sm text-[var(--text-secondary)] leading-loose">
               <li>
-                Simulan sa mga salitang sigurado ka, ang{" "}
+                Simulan sa mga salitang sigurado ka — ang{" "}
                 <span className="text-[var(--group-yellow)]">dilaw</span> na
                 grupo ang pinakamadali.
               </li>
@@ -190,12 +243,12 @@ export default function PaanoMaglaroPage() {
                 <span className="text-[var(--text-primary)] font-semibold">
                   I-shuffle
                 </span>{" "}
-                kung di na keri.
+                kung nahihirapan ka na.
               </li>
 
               <li>
-                May {MAX_ATTEMPTS} na pagkakataon ka lang, so isipin muna ng
-                mabuti like mga 7 times bago isumite.
+                Mayroon ka lamang lima na pagkakataon, kaya pag-isipang mabuti
+                ang bawat sagot bago isumite.
               </li>
             </ul>
           </div>
