@@ -264,8 +264,8 @@ export default function PaanoMaglaroPage() {
         </div>
       </main>
 
-      <footer className="border-t border-[var(--border-default)] p-4 text-center text-xs text-[var(--text-muted)]">
-        {GAME_NAME} © {new Date().getFullYear()} — Tagline here
+      <footer className="border-t border-[var(--border-default)] p-3 sm:p-4 text-center text-[0.45rem] sm:text-xs text-[var(--text-muted)]">
+        {GAME_NAME} © {new Date().getFullYear()}
       </footer>
     </div>
   );

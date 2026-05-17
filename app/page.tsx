@@ -62,7 +62,7 @@ export default function Home() {
         />
       </main>
       <footer className="border-t border-[var(--border-default)] p-3 sm:p-4 text-center text-[0.45rem] sm:text-xs text-[var(--text-muted)]">
-        {GAME_NAME} © {new Date().getFullYear()} — tagline here
+        {GAME_NAME} © {new Date().getFullYear()}
       </footer>
 
       {/* ── modals ── */}
