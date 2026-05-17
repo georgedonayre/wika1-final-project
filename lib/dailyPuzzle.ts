@@ -12,17 +12,20 @@ import { shuffleWords } from "@/lib/shuffle";
 import { STORAGE_KEY, MAX_ATTEMPTS } from "./constants";
 
 function getTodayString(): string {
-  return new Date().toISOString().split("T")[0];
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 /**
  * hashing with sir achim
  */
 export function getTodaysPuzzle(puzzles: Puzzle[]): Puzzle {
-  const dateString = getTodayString();
-  const dateNum = parseInt(dateString.replace(/-/g, ""), 10);
-  const puzzleIndex = dateNum % puzzles.length;
-  return puzzles[puzzleIndex];
+  const today = getTodayString();
+  const found = puzzles.find((p) => p.date === today);
+  return found ?? puzzles[0]; // fallback
 }
 
 export function initializeGameState(puzzle: Puzzle): GameState {
