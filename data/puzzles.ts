@@ -7,7 +7,7 @@ import { Puzzle } from "@/types/game";
 export const puzzles: Puzzle[] = [
   {
     id: "puzzle-demo-1",
-    date: "2026-05-17",
+    date: "2026-05-20",
     groups: [
       {
         id: "g1",
@@ -97,7 +97,7 @@ export const puzzles: Puzzle[] = [
   },
   {
     id: "puzzle-demo-2",
-    date: "2026-05-18",
+    date: "2026-05-21",
     groups: [
       {
         id: "g1",
@@ -147,7 +147,7 @@ export const puzzles: Puzzle[] = [
   },
   {
     id: "puzzle-demo-3",
-    date: "2026-05-19",
+    date: "2026-05-22",
     groups: [
       {
         id: "g1",
@@ -277,7 +277,7 @@ export const puzzles: Puzzle[] = [
   },
   {
     id: "puzzle-demo-4",
-    date: "2026-05-20",
+    date: "2026-05-23",
     groups: [
       {
         id: "g1",
